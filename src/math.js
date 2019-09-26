@@ -135,7 +135,37 @@ Util.cipher = function (phrase) {
  * @return int
  */
 Util.pairs = function(array) {
+    let res=0;
+    for(let i=0; i<array.length;i++){
+        let variable=array[i];
+        for(let j=i+1; j<array.length;j++){
+            if(variable==array[j]){
+                res++;
+            }
+        }
+    }
+    return res;
+};
 
+Util.pairs2 = function(array) {
+    let count = 0;
+    let temp = 1;
+
+    array.sort();
+    for ( var i = 1; i < array.length; i++ ) {
+        if ( array[i] === array[i-1] )
+            temp++;
+        else {
+            count += temp*(temp-1)/2
+            temp = 1;
+        }
+        
+    }
+    if(temp > 1 ){
+        count += temp*(temp-1)/2
+    }
+
+    return count;
 };
 
 module.exports = Util;
