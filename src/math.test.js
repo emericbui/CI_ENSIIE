@@ -61,7 +61,3 @@ test('Test FizzBuzz :', () => {
 test('Test Cipher :', () => {
     expect(Util.cipher("Test Unitaire")).toBe("Uftu Vojubjsf");
 });
-
-test('Test Paris', () => {
-    expect(Util.cipher(0)).toBe();
-});
