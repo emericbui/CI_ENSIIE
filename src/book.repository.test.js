@@ -46,3 +46,37 @@ describe('getTotalPrice method', () => {
         expect(repository.getTotalPrice()).toBe(25.74);
     });
 });
+
+describe('getBookByName method', () => {
+    test('should get all the books named "Pillars Of The Earth" from the db', () =>  {
+        const pillarsOfTheEarthBooks =  [
+            {
+                id: 12,
+                name: 'Pillars Of The Earth',
+                price: 17.99,
+                added_at: '2019-05-05'
+            },
+            {
+                id: 13,
+                name: 'Pillars Of The Earth',
+                price: 17.99,
+                added_at: '2019-05-05'
+            },
+            {
+                id: 54,
+                name: 'Pillars Of The Earth',
+                price: 17.99,
+                added_at: '2019-09-28'
+            }
+        ];
+
+        const dbMock = {
+            get: jest.fn().mockReturnThis(),
+            find: jest.fn().mockReturnThis(),
+            value: jest.fn().mockReturnValue(pillarsOfTheEarthBooks)
+        };
+        const repository = new BookRepository(dbMock);
+
+        expect(repository.getBookByName('Pillars Of The Earth')).toBe(pillarsOfTheEarthBooks);
+    });
+});
