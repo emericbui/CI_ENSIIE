@@ -41,5 +41,8 @@
     "@stryker-mutator/typescript": "^2.1.0",
     "@stryker-mutator/webpack-transpiler": "^2.1.0",
     "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "lowdb": "^1.0.0"
   }
 }
