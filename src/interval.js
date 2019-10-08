@@ -142,7 +142,25 @@ class Interval {
      * @returns {Interval[]}
      */
     exclusion(interval) {
-
+        if (this.start == interval.start && this.end == interval.end) return null;
+        if(this.overlaps(interval)){
+            let intersection = this.intersection(interval);
+            if((this.end>interval.start && interval.start>this.start) && interval.end> this.end){
+                return [new Interval(this.start,intersection.start),new Interval(intersection.end,interval.end)];
+            }else if((interval.end> this.start && this.start> interval.start) && this.end> interval.end){
+                return [new Interval(interval.start,intersection.start),new Interval(intersection.end,this.end)];
+            }else if((this.end>interval.start && interval.start>this.start) && interval.end< this.end){
+                return [new Interval(this.start,intersection.start),new Interval(intersection.end,this.end)]
+            }else if ((interval.end> this.start && this.start> interval.start) && this.end < interval.end){
+                return [new Interval(interval.start,intersection.start),new Interval(intersection.end,interval.end)];
+            }
+        }else{
+            if(this.start < interval.start){
+                return [this,interval];
+            }else{
+                return [interval,this];
+            }
+        }
     };
 }
 
