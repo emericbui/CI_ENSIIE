@@ -8,8 +8,7 @@
   },
   "scripts": {
     "test": "jest",
-    "test.coverage": "jest --coverage",
-    "test.mutation": "stryker run"
+    "test.coverage": "jest --coverage"
   },
   "jest": {
     "verbose": true,
